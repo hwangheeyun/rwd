@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* 초기화*/
+body, h1, h2,ul,p  {margin: 0; padding: 0;}
+h1, h2, h3, h4, h5, h6 {font-weight: normal;}
+ul li {list-style: none;}
+a { text-decoration: #000; color:#575757;}
+address { font-style: normal;}
+small { font-size: 1em;}
+hr { display: none; }
+.hidden {position: absolute; left:-99999px;}
+
+/* 헤더 */
+#header { width: 100%; height: 100px;
+                background: lightgreen; 
+                border-bottom: 5px solid #575757;
+                display: flex; justify-content: center;}
+#header h1 { position: absolute; top: 30px; left: 50px;}
+#header h1 a {}
+
+/* 멤버쉽 */
+#membership {position: absolute; top: 35px; right: 50px;}
+#membership ul {display: flex; justify-content: center;}
+#membership ul li {margin-left: 15px;}
+#membership ul li a {font-size: 14px;}
+
+/* gnb */
+#gnb { margin-top: 35px;}
+#gnb ul { display: flex;}
+#gnb ul li { margin: 0 20px;}
+#gnb ul li a {}
+
+/* 이벤트 */
+#event {width: 100%; height: 500px; background: #626262;
+            display: flex; flex-direction: column; /*주축 방향으로 설정*/
+            align-items: center; /*세로축 센터로 정렬*/
+            justify-content: center; /*가로축 센터로 정렬*/;}
+#event h2 {color:#fff;  }
+#event p {color:#fff; margin: 20px 0 70px;}
+#event a{color:#fff; 
+                display: block; width: 200px; height: 30px;
+                border: 1px solid #fff;
+                text-align: center; line-height: 30px;}
+#event a:hover {background: #fff; color:#000;}
+
+/* 본문 */
+main { display: flex; flex-wrap:wrap; width: 1200px; margin: 0 auto;}
+main > section { height: 300px;}
+
+#content1 { background: khaki;}
+#content2 { background: salmon;}
+#content3 { background: plum;}
+#content4 { background: skyblue;}
+
+/* 푸터 */
+#footer {width: 100%; background: silver; padding: 50px 0;}
+
+/* 1200px 이상 */
+@media all and (min-width:1200px) {
+    main>section {width:25%}
+    #event h2 { font-size: 100px;}
+    #event p { font-size: 2vw;}
+}
+/* 1200px 이하 */
+@media all and (max-width: 1199px) { 
+    main {width: 100%; }
+    main>section {width:25%}
+    #event h2 {font-size: 10vw;}
+    #event p {font-size: 2vw;}
+}
+/* 800px 이하 */
+@media all and (max-width:800px) {
+    main>section{ width: 50%; 
+        /*공통에서 flex-wrap 설정하고 바꿔야한다*/}
+        #event h2 { font-size: 32px;}
+        #event p { font-size: 16px;}
+        #gnb {position: fixed; top:0; left:-200px;
+                    width: 200px; height: 100vh;
+                    background: plum;
+                    margin:0; transition: 0.5s;
+                    
+                    }
+        #gnb ul {display: block}
+        #gnb ul li {line-height: 50px; text-align: center;}
+        #gnb ul li {color: #fff;}
+
+        .gnbView {display:block; 
+                        position:absolute; top:30px; left:30px;
+                        width: 40px; height: 40px;
+                        border: 3px solid #575757;}
+        .gnbView:before { content:""; width: 30px; height: 2px;
+                                    background: #575757;
+                                    /* before는 인라인요소이기 때문에 */ position: absolute; top: 12px; left:5px;}
+        .gnbView:after { content:""; width: 30px; height: 2px;
+                                background: #575757;
+                                /* before는 인라인요소이기 때문에 */       position: absolute; 
+                                bottom: 12px; left:5px;}   
+        .gnbView:hover::before {transform:rotate(45deg); top:20px;}        
+        .gnbView:hover::after {transform:rotate(-45deg); top:20px;}
+                          
+        #header h1 {position: static; margin-top:30px;}
+}
+
+/* 600이하 */
+@media all and (max-width:600px) {
+    main>section {width:100%}
+    #membership ul {display: block; text-align: right;}
+    main>section {width:100%}
+}
+
